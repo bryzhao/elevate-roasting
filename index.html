@@ -1,32 +1,127 @@
 <!doctype html>
+<!-- 
+  ELEVATE ROASTING WEBSITE
+  
+  This is a single-page website for Elevate Roasting, a specialty coffee roasting company
+  based in San Francisco. The site showcases their brand, current coffee offerings,
+  and provides a way for customers to subscribe for updates.
+  
+  Technology Stack:
+  - Pure HTML5 with semantic markup
+  - Tailwind CSS (via CDN) for styling and responsive design
+  - Minimal vanilla JavaScript for dynamic year display
+  - Mobile-first responsive design approach
+  
+  Design Philosophy:
+  - Dark theme with high contrast for readability
+  - Clean, minimal aesthetic with subtle borders and spacing
+  - Focus on typography and content hierarchy
+  - Smooth hover transitions and interactive elements
+-->
 <html lang="en">
 <head>
+  <!-- CHARACTER ENCODING AND VIEWPORT -->
+  <!-- UTF-8 ensures proper rendering of special characters like em-dashes (‑) -->
   <meta charset="utf-8" />
+  <!-- Responsive viewport meta tag for mobile-first design -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- BASIC PAGE METADATA -->
   <title>Elevate Roasting</title>
+  <!-- SEO-optimized description emphasizing key selling points -->
   <meta name="description" content="Small‑batch specialty coffee, roasted at home in San Francisco. We only use high-quality beans and roast with attention to detail." />
+  
+  <!-- OPEN GRAPH / SOCIAL MEDIA METADATA -->
+  <!-- These tags control how the site appears when shared on social media -->
   <meta property="og:title" content="Elevate Roasting" />
   <meta property="og:description" content="Small‑batch specialty coffee, roasted at home in San Francisco." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og.jpg" />
+  
+  <!-- BROWSER CONFIGURATION -->
+  <!-- Favicon for browser tabs and bookmarks -->
   <link rel="icon" href="/favicon.ico" />
+  <!-- Indicates the site supports both dark and light color schemes -->
   <meta name="color-scheme" content="dark light" />
-  <!-- Tailwind via CDN for fast prototyping. Replace with a build step later. -->
+  
+  <!-- STYLING FRAMEWORK -->
+  <!-- 
+    Using Tailwind CSS via CDN for rapid prototyping.
+    In production, this should be replaced with a build step to:
+    - Reduce bundle size by including only used classes
+    - Enable custom configuration and theme customization
+    - Improve performance through proper caching
+  -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- CUSTOM CSS STYLES -->
   <style>
-    /* Apple‑like system font stack (free, no license needed) */
+    /* 
+      CUSTOM CSS VARIABLES AND OVERRIDES
+      
+      These styles supplement Tailwind with custom properties and
+      typography settings that align with the brand aesthetic.
+    */
+    
+    /* Apple-inspired system font stack for optimal readability across platforms */
+    /* This provides consistent typography without requiring web font downloads */
+    html { 
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", 
+                   Segoe UI, Roboto, "Helvetica Neue", Arial, system-ui, "Noto Sans", sans-serif; 
+    }
+    
+    /* CSS Custom Properties for consistent design tokens */
     :root {
+      /* Subtle ring effect for focus states and hover interactions */
+      /* Creates a soft glow effect that's more elegant than default browser focus rings */
       --ring: 0 0 0 2px rgba(255,255,255,.08);
     }
-    html { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Segoe UI, Roboto, "Helvetica Neue", Arial, system-ui, "Noto Sans", sans-serif; }
-    .container { max-width: 1000px; }
+    
+    /* Container max-width override to maintain readable line lengths */
+    /* 1000px provides optimal reading experience while still feeling spacious */
+    .container { 
+      max-width: 1000px; 
+    }
   </style>
 </head>
+<!-- 
+  MAIN BODY CONTAINER
+  
+  Body styling establishes the overall visual foundation:
+  - antialiased: Improves font rendering for smoother text
+  - bg-black: Dark background supporting the premium brand aesthetic
+  - text-white: High contrast text for readability on dark background
+-->
 <body class="antialiased bg-black text-white">
-  <!-- Site header -->
+
+  <!-- 
+    STICKY SITE HEADER
+    
+    The header provides persistent navigation and brand presence throughout
+    the user's scroll experience. Design decisions:
+    
+    Layout: Uses flexbox for space-between distribution of logo and navigation
+    Positioning: Sticky positioning keeps header visible during scroll
+    Visual hierarchy: Logo uses larger text with muted secondary text
+    Accessibility: All navigation items are properly linked to page sections
+  -->
   <header class="sticky top-0 z-10 bg-black/80 backdrop-blur border-b border-neutral-800">
     <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#home" class="font-semibold tracking-tight text-xl">Elevate<span class="text-neutral-400">Roasting</span></a>
+      <!-- 
+        BRAND LOGO/WORDMARK
+        Two-tone design with "Elevate" in full white and "Roasting" in muted gray
+        Links to home section for easy navigation back to top
+      -->
+      <a href="#home" class="font-semibold tracking-tight text-xl">
+        Elevate<span class="text-neutral-400">Roasting</span>
+      </a>
+      
+      <!-- 
+        PRIMARY NAVIGATION
+        Single-page app navigation using anchor links to scroll to sections
+        Hover effects provide subtle feedback for user interaction
+        Small text size maintains clean header proportions
+      -->
       <nav class="flex items-center gap-6 text-sm">
         <a class="hover:opacity-80" href="#about">About</a>
         <a class="hover:opacity-80" href="#drops">Drops</a>
@@ -36,20 +131,102 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- 
+    HERO SECTION
+    
+    The hero section serves as the primary landing area and value proposition.
+    It employs a split-screen layout that works responsively across devices.
+    
+    Responsive Design Strategy:
+    - Mobile: Single column stack (text above image)
+    - Desktop: Two-column grid with text on left, image on right
+    - Medium screens: md:grid-cols-2 activates at 768px+ breakpoint
+    
+    Typography Hierarchy:
+    - H1: Large, bold headline with responsive sizing (4xl mobile, 5xl desktop)
+    - Subtitle: Muted color with descriptive brand positioning
+    - CTA buttons: Primary (white border) and secondary (gray border) actions
+    
+    Visual Elements:
+    - Hero image: Coffee-related stock photo with proper aspect ratio
+    - Rounded corners: Consistent with overall design language
+    - Spacing: py-20 provides generous vertical breathing room
+  -->
   <section id="home" class="container mx-auto px-4 py-20 grid md:grid-cols-2 items-center gap-10">
+    <!-- TEXT CONTENT COLUMN -->
     <div>
-      <h1 class="text-4xl md:text-5xl font-semibold leading-tight tracking-tight">Modern, low‑ego, high‑quality coffee.</h1>
-      <p class="mt-4 text-neutral-300">Small‑batch roasts, science‑minded profiles, zero fluff. Based in San Francisco, CA.</p>
+      <!-- 
+        PRIMARY HEADLINE
+        Uses responsive typography scaling and tight line-height for impact
+        Em-dash character (‑) adds typographic sophistication
+      -->
+      <h1 class="text-4xl md:text-5xl font-semibold leading-tight tracking-tight">
+        Modern, low‑ego, high‑quality coffee.
+      </h1>
+      
+      <!-- 
+        BRAND POSITIONING STATEMENT
+        Neutral-300 provides readable secondary text color
+        Communicates key differentiators: small-batch, science-based, location
+      -->
+      <p class="mt-4 text-neutral-300">
+        Small‑batch roasts, science‑minded profiles, zero fluff. Based in San Francisco, CA.
+      </p>
+      
+      <!-- 
+        CALL-TO-ACTION BUTTONS
+        Two-button layout offers primary and secondary actions
+        Custom CSS variable (--ring) provides elegant hover effects
+        Rounded-2xl maintains consistent border radius throughout site
+      -->
       <div class="mt-8 flex gap-3">
-        <a href="#subscribe" class="rounded-2xl px-5 py-3 border border-white hover:shadow-[var(--ring)] transition">Get updates</a>
-        <a href="#drops" class="rounded-2xl px-5 py-3 border border-neutral-700 hover:border-white transition">Latest drop</a>
+        <!-- Primary CTA: Newsletter subscription -->
+        <a href="#subscribe" 
+           class="rounded-2xl px-5 py-3 border border-white hover:shadow-[var(--ring)] transition">
+          Get updates
+        </a>
+        <!-- Secondary CTA: View current products -->
+        <a href="#drops" 
+           class="rounded-2xl px-5 py-3 border border-neutral-700 hover:border-white transition">
+          Latest drop
+        </a>
       </div>
     </div>
+    
+    <!-- 
+      HERO IMAGE CONTAINER
+      
+      Uses Unsplash image with URL parameters for optimization:
+      - q=80: Quality setting for file size vs quality balance
+      - w=1200: Width optimization for typical display sizes
+      - auto=format: Allows Unsplash to serve optimal format (WebP, etc.)
+      - fit=crop: Ensures image fills container without distortion
+      
+      CSS Classes Breakdown:
+      - aspect-[4/3]: Maintains 4:3 aspect ratio regardless of container size
+      - rounded-2xl: Consistent border radius with other elements
+      - border border-neutral-800: Subtle border for definition
+      - bg-cover bg-center: Ensures image covers full area and centers properly
+    -->
     <div class="aspect-[4/3] rounded-2xl border border-neutral-800 bg-[url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center"></div>
   </section>
 
-  <!-- About -->
+    <!-- 
+    ABOUT SECTION
+    
+    This section explains the company's mission and approach using a structured
+    layout that combines detailed description with key feature highlights.
+    
+    Layout Strategy:
+    - Desktop: 2/3 width for main content, 1/3 for feature list
+    - Mobile: Stacked single column with natural content flow
+    - Border-t creates visual section separation
+    
+    Content Architecture:
+    - Main description: Detailed explanation of company philosophy
+    - Feature list: Bullet points highlighting key differentiators
+    - Typography: Hierarchy established through size and color variation
+  -->
   <section id="about" class="container mx-auto px-4 py-16 border-t border-neutral-800">
     <div class="grid md:grid-cols-3 gap-10">
       <div class="md:col-span-2">
@@ -65,19 +242,93 @@
     </div>
   </section>
 
-  <!-- Drops (placeholder cards) -->
+  <!-- 
+    COFFEE DROPS SECTION
+    
+    This section showcases current coffee offerings using a card-based layout.
+    Each card represents a specific coffee batch with product details.
+    
+    Layout Strategy:
+    - Responsive grid: 1 column mobile, 2 columns tablet, 3 columns desktop
+    - Card pattern: Image + content with price and action button
+    - Consistent aspect ratios and spacing throughout
+    
+    Card Structure:
+    - Product image: 4:3 aspect ratio with proper cropping
+    - Product details: Name, flavor notes, pricing
+    - Call-to-action: Details button for more information
+    
+    Content Management:
+    - Currently uses placeholder content and stock photos
+    - Template card structure ready for dynamic content integration
+    - Consistent pricing format ($XX / XXXg)
+  -->
   <section id="drops" class="container mx-auto px-4 py-16 border-t border-neutral-800">
+    <!-- 
+      SECTION HEADER WITH NAVIGATION LINK
+      Flexbox layout provides space-between distribution
+      Links to subscribe section for lead capture
+    -->
     <div class="flex items-end justify-between">
       <h2 class="text-2xl font-semibold tracking-tight">Drops</h2>
       <a href="#subscribe" class="text-sm underline underline-offset-4 hover:opacity-80">Get notified</a>
     </div>
+    
+    <!-- 
+      PRODUCT CARDS GRID
+      
+      Responsive grid system:
+      - Mobile: Single column (base)
+      - Tablet: 2 columns (sm:grid-cols-2) 
+      - Desktop: 3 columns (lg:grid-cols-3)
+      
+      Card Design Pattern:
+      Each article represents a coffee product with:
+      1. Hero image (4:3 aspect ratio)
+      2. Product information (name, tasting notes)
+      3. Pricing and action button
+    -->
     <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Card template; duplicate as needed -->
+      <!-- 
+        COFFEE PRODUCT CARD #1 - TEMPLATE STRUCTURE
+        
+        This card serves as the template pattern for all coffee product displays.
+        The structure is consistent across all products for maintainability.
+        
+        Component Breakdown:
+        1. Article wrapper: Semantic HTML5 element for product content
+        2. Image container: Fixed aspect ratio with background image
+        3. Content area: Product details, pricing, and actions
+        
+        CSS Classes Explained:
+        - rounded-2xl: Consistent border radius throughout site
+        - border border-neutral-800: Subtle outline for card definition
+        - overflow-hidden: Ensures rounded corners apply to child content
+      -->
       <article class="rounded-2xl border border-neutral-800 overflow-hidden">
+        <!-- 
+          PRODUCT IMAGE
+          Uses CSS background-image for proper aspect ratio control
+          Unsplash URL parameters optimize delivery and quality
+        -->
         <div class="aspect-[4/3] bg-[url('https://images.unsplash.com/photo-1503481766315-7a586b20f66f?q=80&w=1200&auto=format&fit=crop')] bg-cover"></div>
+        
+        <!-- 
+          PRODUCT INFORMATION CONTAINER
+          Padded content area with structured product details
+        -->
         <div class="p-4">
+          <!-- Product name with origin and processing method -->
           <h3 class="font-medium">Kenya Nyeri – Washed</h3>
+          
+          <!-- Tasting notes in muted color for secondary information -->
           <p class="text-sm text-neutral-400 mt-1">Blackcurrant, grapefruit, florals</p>
+          
+          <!-- 
+            PRICING AND ACTION ROW
+            Flexbox layout with space-between for price/action distribution
+            Consistent button styling with hover effects
+          -->
           <div class="mt-4 flex items-center justify-between">
             <span class="text-sm text-neutral-200">$18 / 200g</span>
             <button class="text-sm rounded-xl px-3 py-2 border border-white hover:shadow-[var(--ring)]">Details</button>
