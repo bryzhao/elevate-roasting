@@ -335,6 +335,7 @@
           </div>
         </div>
       </article>
+      <!-- COFFEE PRODUCT CARD #2 - Colombia -->
       <article class="rounded-2xl border border-neutral-800 overflow-hidden">
         <div class="aspect-[4/3] bg-[url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop')] bg-cover"></div>
         <div class="p-4">
@@ -346,6 +347,8 @@
           </div>
         </div>
       </article>
+      
+      <!-- COFFEE PRODUCT CARD #3 - Ethiopia -->
       <article class="rounded-2xl border border-neutral-800 overflow-hidden">
         <div class="aspect-[4/3] bg-[url('https://images.unsplash.com/photo-1445077100181-a33e9ac94db0?q=80&w=1200&auto=format&fit=crop')] bg-cover"></div>
         <div class="p-4">
@@ -360,7 +363,30 @@
     </div>
   </section>
 
-  <!-- Subscribe (static, swap with real provider later) -->
+  <!-- 
+    EMAIL SUBSCRIPTION SECTION
+    
+    This section provides newsletter signup functionality for customer engagement.
+    Currently implemented as a prototype with client-side handling.
+    
+    Technical Implementation:
+    - Form uses email validation with HTML5 required attribute
+    - JavaScript preventDefault stops actual form submission
+    - Placeholder alert provides user feedback
+    - Form automatically resets after submission
+    
+    Design Strategy:
+    - Constrained width (max-w-md) for optimal form usability
+    - Flex layout for input/button horizontal arrangement
+    - Consistent styling with site button patterns
+    - Focus states for accessibility
+    
+    Future Integration Notes:
+    - Replace alert() with proper email service integration
+    - Add real form validation and error handling
+    - Integrate with email marketing platform (mentioned: Stripe)
+    - Consider adding privacy policy and consent mechanisms
+  -->
   <section id="subscribe" class="container mx-auto px-4 py-16 border-t border-neutral-800">
     <h2 class="text-2xl font-semibold tracking-tight">Subscribe for drops</h2>
     <p class="mt-2 text-neutral-300">No spam, just roast announcements and brew tips. (We’ll replace this with a real email provider/Stripe when ready.)</p>
@@ -370,13 +396,51 @@
     </form>
   </section>
 
-  <!-- Contact / Footer -->
+  <!-- 
+    CONTACT & FOOTER SECTION
+    
+    The footer serves dual purpose as contact information and site footer.
+    Includes copyright, contact details, and social media links.
+    
+    Layout Strategy:
+    - Responsive flex layout: column on mobile, row on larger screens
+    - Copyright on left, contact links on right
+    - Subtle text color (neutral-400) for footer hierarchy
+    
+    Interactive Elements:
+    - Email link opens user's mail client
+    - Social links currently use placeholder href="#"
+    - Hover effects maintain consistent site interactions
+    
+    Dynamic Content:
+    - Copyright year is dynamically updated via JavaScript
+    - Uses span#y as target for year insertion
+  -->
   <footer id="contact" class="border-t border-neutral-800">
     <div class="container mx-auto px-4 py-12 text-sm text-neutral-400">
+      <!-- 
+        FOOTER CONTENT CONTAINER
+        Responsive flexbox layout for copyright and contact links
+        flex-col sm:flex-row: Stacks vertically on mobile, horizontally on desktop
+      -->
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <!-- 
+          COPYRIGHT NOTICE
+          Dynamic year span is populated by JavaScript at page load
+          Includes company name and location for brand reinforcement
+        -->
         <p>© <span id="y"></span> Elevate Roasting • San Francisco, CA</p>
+        
+        <!-- 
+          CONTACT & SOCIAL LINKS
+          Flex container with consistent gap spacing
+          Email uses mailto: protocol for direct contact
+          Social links prepared for future integration
+        -->
         <div class="flex gap-4">
+          <!-- Direct email contact link -->
           <a href="mailto:hello@elevateroasting.com" class="hover:opacity-80">hello@elevateroasting.com</a>
+          <!-- Social media placeholders (currently empty links) -->
           <a href="#" class="hover:opacity-80">Instagram</a>
           <a href="#" class="hover:opacity-80">GitHub</a>
         </div>
@@ -384,8 +448,32 @@
     </div>
   </footer>
 
+  <!-- 
+    JAVASCRIPT FUNCTIONALITY
+    
+    This script handles dynamic content updates for the page.
+    Currently minimal JavaScript approach maintains simplicity and performance.
+    
+    Dynamic Year Update:
+    - Automatically updates copyright year in footer
+    - Ensures copyright notice stays current without manual updates
+    - Uses vanilla JavaScript for minimal dependency overhead
+    
+    Implementation Details:
+    - Targets span#y element in the footer
+    - Uses Date().getFullYear() for current year
+    - Executes immediately when page loads
+    - No external dependencies or frameworks required
+    
+    Future Considerations:
+    - Form submission handling for email signup
+    - Product detail modal functionality
+    - Analytics and tracking integration
+    - Progressive enhancement features
+  -->
   <script>
-    // Keep the footer year current
+    // Dynamically update copyright year to keep footer current
+    // Targets the span element with id="y" in the footer
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
