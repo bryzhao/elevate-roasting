@@ -2,13 +2,7 @@
 
 Small‑batch specialty coffee, roasted at home in San Francisco. We only use high-quality beans and roast with attention to detail.
 
-## 🚀 Features
-
-- **Modern, minimalist design** - Clean, professional coffee roasting website
-- **Responsive layout** - Works perfectly on desktop, tablet, and mobile
-- **Modular architecture** - Separated concerns for easy maintenance and extension
-- **Future-ready** - Prepared for Instagram integration and Stripe payments
-- **Accessible** - Built with accessibility best practices
+The website is open-source, to be a potential resource for other folks who may be interested in website development and software integration for artisan goods. 
 
 ## 📁 Project Structure
 
@@ -127,121 +121,6 @@ Edit `config/site-config.js` and add to the `coffeeDrops` array:
   varietal: 'Coffee Varietal'
 }
 ```
-
-## 🚀 Future Integrations
-
-### Instagram Integration
-1. Update `config/site-config.js` with your Instagram handle
-2. Implement Instagram API or embed feed
-3. Add Instagram feed component to homepage
-
-### Stripe Payment Integration
-1. Set up Stripe account and get API keys
-2. Enable `stripeEnabled` in feature flags
-3. Implement subscription buttons with Stripe Checkout
-4. Add webhook handling for payment confirmations
-
-### Email Service Integration
-1. Choose email service (Mailchimp, ConvertKit, etc.)
-2. Enable `emailServiceEnabled` in feature flags
-3. Replace placeholder in `app.js` with actual API calls
-
-## 📝 Development Guidelines
-
-### Code Style
-- Use consistent indentation (2 spaces)
-- Follow Google coding style guidelines
-- Write clear, descriptive comments
-- Use semantic HTML and CSS class names
-
-### JavaScript
-- Use ES6+ features
-- Implement proper error handling
-- Write modular, reusable functions
-- Use TypeScript for future projects
-
-### CSS
-- Use CSS custom properties for theming
-- Follow BEM methodology for class naming
-- Implement responsive design patterns
-- Optimize for performance
-
-### Git Workflow
-- Use descriptive commit messages
-- Create feature branches for new development
-- Review code before merging
-- Keep commits atomic and focused
-
-## 🧪 Testing
-
-### Manual Testing Checklist
-- [ ] Responsive design on all screen sizes
-- [ ] Form validation and submission
-- [ ] Navigation and smooth scrolling
-- [ ] Social media links
-- [ ] Coffee drop details
-- [ ] Accessibility (keyboard navigation, screen readers)
-
-### Automated Testing (Future)
-- Unit tests for utility functions
-- Integration tests for form handling
-- Visual regression tests
-- Performance testing
-
-## 📊 Performance
-
-### Current Optimizations
-- Minified CSS and JavaScript
-- Optimized images
-- Efficient DOM manipulation
-- Lazy loading (planned)
-
-### Future Optimizations
-- Image compression and WebP format
-- Service worker for caching
-- Critical CSS inlining
-- Bundle splitting and code splitting
-
-## 🔒 Security
-
-### Current Measures
-- Input validation and sanitization
-- Secure form handling
-- HTTPS enforcement (when deployed)
-
-### Future Enhancements
-- Content Security Policy (CSP)
-- Rate limiting for forms
-- CSRF protection
-- Security headers
-
-## 📈 Analytics
-
-### Current Tracking
-- Basic event logging in console
-- Social media click tracking
-
-### Future Analytics
-- Google Analytics 4 integration
-- Conversion tracking
-- User behavior analysis
-- A/B testing framework
-
-## 🚀 Deployment
-
-### Static Hosting
-This site is designed for static hosting platforms:
-
-- **Netlify** - Drag and drop deployment
-- **Vercel** - Git-based deployment
-- **GitHub Pages** - Free hosting for public repos
-- **AWS S3 + CloudFront** - Scalable static hosting
-
-### Environment Variables
-Set these in your hosting platform:
-- `STRIPE_PUBLIC_KEY` - For payment integration
-- `EMAIL_SERVICE_API_KEY` - For email subscriptions
-- `INSTAGRAM_ACCESS_TOKEN` - For Instagram feed
 
 ## 🤝 Contributing
 
