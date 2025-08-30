@@ -1,6 +1,6 @@
-# GitHub Copilot Instructions for Elevate Roasting
+# Cursor Rules for Elevate Roasting
 
-## Project Overview
+## Project Context
 This is an open source coffee roasting website built for learning and inspiration. It demonstrates modern web development practices for small businesses with a clean, modular architecture.
 
 ## Core Principles
@@ -19,6 +19,7 @@ This is an open source coffee roasting website built for learning and inspiratio
 - Use **descriptive variable names** that explain their purpose
 - Write **extensive comments** explaining design decisions, rationale, and tradeoffs
 - Avoid redundant comments like "Initialize the application" - explain WHAT and WHY
+- **IGNORE LINTER ERRORS** - focus on functionality over strict linting
 
 ### CSS
 - Use **CSS custom properties** for theming (`:root` variables)
@@ -116,29 +117,6 @@ This is an open source coffee roasting website built for learning and inspiratio
 - Handle **unsubscribe** requests
 - Integrate with **email service providers**
 
-## Testing Guidelines
-- Write **unit tests** for utility functions
-- Test **user interactions** and form submissions
-- Verify **responsive design** across devices
-- Test **accessibility** with keyboard navigation
-- Use **manual testing checklist** for critical paths
-
-## Deployment Considerations
-- Use **static hosting** (GitHub Pages, Netlify, Vercel)
-- Configure **custom domain** and SSL
-- Set up **environment variables** for API keys
-- Implement **analytics** for user insights
-- Use **CDN** for asset delivery
-
-## Code Review Checklist
-- [ ] Code follows **simplicity principle**
-- [ ] **Comments** explain design decisions
-- [ ] **Error handling** is implemented
-- [ ] **Accessibility** features included
-- [ ] **Performance** considerations addressed
-- [ ] **Extensibility** maintained
-- [ ] **Documentation** updated
-
 ## Common Patterns
 
 ### Configuration Object
@@ -181,6 +159,41 @@ document.addEventListener('click', (e) => {
   }
 });
 ```
+
+## When Suggesting Code
+
+### Do's
+- Suggest the **simplest possible solution** that works
+- Use **existing patterns** from the codebase
+- Include **clear comments** explaining the approach
+- Consider **future extensibility**
+- Follow the **established naming conventions**
+- Write **educational code** that others can learn from
+
+### Don'ts
+- Don't over-engineer solutions
+- Don't introduce unnecessary dependencies
+- Don't ignore existing code patterns
+- Don't write redundant or obvious comments
+- Don't sacrifice readability for cleverness
+- Don't ignore accessibility and performance
+
+## Testing Guidelines
+- Write **unit tests** for utility functions
+- Test **user interactions** and form submissions
+- Verify **responsive design** across devices
+- Test **accessibility** with keyboard navigation
+- Use **manual testing checklist** for critical paths
+
+## Deployment Considerations
+- Use **static hosting** (GitHub Pages, Netlify, Vercel)
+- Configure **custom domain** and SSL
+- Set up **environment variables** for API keys
+- Implement **analytics** for user insights
+- Use **CDN** for asset delivery
+
+## Pipeline
+- When it is absolutely beneficial, add to the Github Workflows pipeline for automated testing. Prioritize what is most important to the development workflow.
 
 ## Remember
 - **Keep it simple** - avoid over-engineering

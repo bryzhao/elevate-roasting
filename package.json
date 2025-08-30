@@ -1,7 +1,7 @@
 {
   "name": "elevate-roasting",
   "version": "1.0.0",
-  "description": "Small‑batch specialty coffee, roasted at home in San Francisco",
+  "description": "Open source coffee roasting website built for learning and inspiration. A clean, modular codebase demonstrating modern web development practices for small businesses.",
   "main": "index.html",
   "scripts": {
     "start": "python3 -m http.server 8000",
