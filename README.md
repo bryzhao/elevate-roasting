@@ -2,7 +2,7 @@
 
 Small‑batch specialty coffee, roasted at home in San Francisco. We only use high-quality beans and roast with attention to detail.
 
-The website is open-source, so that other folks who may be interested in website development and software integration for artisan goods. 
+The website is open-source, to be a potential resource for other folks who may be interested in website development and software integration for artisan goods. 
 
 ## 📁 Project Structure
 
