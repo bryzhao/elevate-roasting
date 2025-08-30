@@ -23,13 +23,13 @@
     "small-batch"
   ],
   "author": "Elevate Roasting",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elevateroasting/elevate-roasting.git"
+    "url": "https://github.com/bryzhao/elevate-roasting.git"
   },
   "bugs": {
-    "url": "https://github.com/elevateroasting/elevate-roasting/issues"
+    "url": "https://github.com/bryzhao/elevate-roasting/issues"
   },
   "homepage": "https://elevateroasting.com",
   "devDependencies": {

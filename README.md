@@ -8,7 +8,14 @@ The website is open-source, to be a potential resource for other folks who may b
 
 ```
 elevate-roasting/
-├── index.html              # Main HTML file
+├── index.html              # Main website file
+├── subscriptions.html      # Subscription page
+├── about/
+│   ├── contact.html        # Contact page
+│   └── our-story.html      # About page
+├── coffee/
+│   ├── espresso.html       # Espresso coffee page
+│   └── single-origin.html  # Single origin coffee page
 ├── css/
 │   └── styles.css          # All styles and components
 ├── js/
@@ -16,9 +23,9 @@ elevate-roasting/
 │   └── utils.js           # Utility functions
 ├── config/
 │   └── site-config.js     # Site configuration and data
-├── assets/
-│   └── images/            # Image assets (future use)
 ├── package.json           # Project dependencies and scripts
+├── LICENSE                # GPL v3 license
+├── CNAME                  # GitHub Pages custom domain
 └── README.md              # This file
 ```
 
@@ -26,52 +33,33 @@ elevate-roasting/
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
 - Python 3 (for local development server)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/elevateroasting/elevate-roasting.git
-   cd elevate-roasting
-   ```
-
-2. **Install dependencies** (optional, for development tools)
-   ```bash
-   npm install
-   ```
+- Node.js (optional, for linting tools)
 
 ### Local Development
 
-#### Start Development Server
-```bash
-npm start
-# or
-python3 -m http.server 8000
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/bryzhao/elevate-roasting.git
+   cd elevate-roasting
+   ```
 
-#### Open in Browser
-```
-http://localhost:8000
-```
+2. **Start development server**
+   ```bash
+   python3 -m http.server 8000
+   # or
+   npm start
+   ```
 
-#### Run Linting
-```bash
-npm run lint
-```
-
-#### Run Tests
-```bash
-npm test
-```
+3. **Open in browser**
+   ```
+   http://localhost:8000
+   ```
 
 ### Quick Commands
 - `npm start` - Start local development server
 - `npm run lint` - Check code quality and syntax
 - `npm test` - Run all tests (currently same as lint)
-- `npm run lint:css` - Check CSS syntax only
-- `npm run lint:js` - Check JavaScript syntax only
 
 ## 🎨 Design System
 
@@ -132,13 +120,13 @@ Edit `config/site-config.js` and add to the `coffeeDrops` array:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPL v3 License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact
 
 - **Email**: hello@elevateroasting.com
 - **Instagram**: [@elevateroasting](https://instagram.com/elevateroasting)
-- **GitHub**: [elevateroasting](https://github.com/elevateroasting)
+- **GitHub**: [bryzhao/elevate-roasting](https://github.com/bryzhao/elevate-roasting)
 
 ---
 
