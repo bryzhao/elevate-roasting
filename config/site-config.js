@@ -140,21 +140,21 @@ const siteConfig = {
       id: 'weekly',
       name: 'Weekly',
       price: '$18',
-      description: 'Fresh coffee every week',
+      description: 'Fresh coffee every week for pickup',
       interval: 'week' // Maps to Stripe billing interval
     },
     {
       id: 'biweekly',
       name: 'Bi-weekly',
       price: '$32', // Slight discount for larger orders
-      description: 'Fresh coffee every two weeks',
+      description: 'Fresh coffee every two weeks for pickup',
       interval: '2 weeks'
     },
     {
       id: 'monthly',
       name: 'Monthly',
       price: '$60', // Best value for regular customers
-      description: 'Fresh coffee every month',
+      description: 'Fresh coffee every month for pickup',
       interval: 'month'
     }
   ],
