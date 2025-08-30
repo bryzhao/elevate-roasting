@@ -37,17 +37,17 @@
   --border-light: #525252; /* Lighter borders for subtle separation */
   --border-dark: #262626; /* Darker borders for strong separation */
   
-  /* Spacing scale based on 4px grid system
+  /* Spacing scale based on 4px grid system with modern generous spacing
    * 
    * Consistent spacing ensures visual rhythm and reduces design decisions.
-   * The scale progresses geometrically for natural visual hierarchy.
+   * Updated scale provides more generous spacing for modern aesthetic.
    */
-  --space-xs: 0.25rem;  /* 4px - minimal spacing */
-  --space-sm: 0.5rem;   /* 8px - small spacing */
-  --space-md: 1rem;     /* 16px - base spacing */
-  --space-lg: 1.5rem;   /* 24px - large spacing */
-  --space-xl: 2rem;     /* 32px - extra large spacing */
-  --space-2xl: 3rem;    /* 48px - section spacing */
+  --space-xs: 0.375rem;  /* 6px - minimal spacing, increased for breathing room */
+  --space-sm: 0.75rem;   /* 12px - small spacing, more generous */
+  --space-md: 1.25rem;   /* 20px - base spacing, increased for modern feel */
+  --space-lg: 2rem;      /* 32px - large spacing, more generous */
+  --space-xl: 2.5rem;    /* 40px - extra large spacing */
+  --space-2xl: 4rem;     /* 64px - section spacing, more generous for modern look */
   
   /* Typography scale for consistent text sizing
    * 
@@ -75,12 +75,12 @@
 }
 
 html {
-  /* Apple system font stack for optimal readability
+  /* Modern Inter font with fallback to system fonts
    * 
-   * Uses native system fonts for better performance and familiarity.
-   * Fallback to generic sans-serif ensures compatibility across platforms.
+   * Inter is a modern, highly readable font designed for digital interfaces.
+   * Maintains excellent legibility at all sizes with optimized letter spacing.
    */
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", 
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", 
                Segoe UI, Roboto, "Helvetica Neue", Arial, system-ui, "Noto Sans", sans-serif;
   scroll-behavior: smooth; /* Smooth scrolling for better UX */
 }
@@ -90,7 +90,8 @@ body {
   padding: 0;
   background-color: var(--background-color);
   color: var(--text-primary);
-  line-height: 1.6; /* Optimal line height for readability */
+  line-height: 1.7; /* More generous line height for better readability */
+  letter-spacing: 0.01em; /* Slight letter spacing for body text */
   -webkit-font-smoothing: antialiased; /* Crisp text on WebKit browsers */
   -moz-osx-font-smoothing: grayscale; /* Crisp text on Firefox */
 }
@@ -122,7 +123,7 @@ body {
  */
 .text-heading {
   font-weight: 600; /* Semi-bold for headings */
-  letter-spacing: -0.025em; /* Tighter letter spacing for modern look */
+  letter-spacing: 0.02em; /* More open letter spacing for modern look */
   line-height: 1.1; /* Tighter line height for headings */
 }
 
