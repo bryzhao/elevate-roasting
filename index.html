@@ -1,15 +1,47 @@
 <!doctype html>
+<!-- 
+  ELEVATE ROASTING WEBSITE
+  
+  This is a single-page website for Elevate Roasting, a specialty coffee roasting company
+  based in San Francisco. The site showcases their brand, current coffee offerings,
+  and provides a way for customers to subscribe for updates.
+  
+  Technology Stack:
+  - Pure HTML5 with semantic markup
+  - Tailwind CSS (via CDN) for styling and responsive design
+  - Minimal vanilla JavaScript for dynamic year display
+  - Mobile-first responsive design approach
+  
+  Design Philosophy:
+  - Dark theme with high contrast for readability
+  - Clean, minimal aesthetic with subtle borders and spacing
+  - Focus on typography and content hierarchy
+  - Smooth hover transitions and interactive elements
+-->
 <html lang="en">
 <head>
+  <!-- CHARACTER ENCODING AND VIEWPORT -->
+  <!-- UTF-8 ensures proper rendering of special characters like em-dashes (‑) -->
   <meta charset="utf-8" />
+  <!-- Responsive viewport meta tag for mobile-first design -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- BASIC PAGE METADATA -->
   <title>Elevate Roasting</title>
+  <!-- SEO-optimized description emphasizing key selling points -->
   <meta name="description" content="Small‑batch specialty coffee, roasted at home in San Francisco. We only use high-quality beans and roast with attention to detail." />
+  
+  <!-- OPEN GRAPH / SOCIAL MEDIA METADATA -->
+  <!-- These tags control how the site appears when shared on social media -->
   <meta property="og:title" content="Elevate Roasting" />
   <meta property="og:description" content="Small‑batch specialty coffee, roasted at home in San Francisco." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og.jpg" />
+  
+  <!-- BROWSER CONFIGURATION -->
+  <!-- Favicon for browser tabs and bookmarks -->
   <link rel="icon" href="/favicon.ico" />
+  <!-- Indicates the site supports both dark and light color schemes -->
   <meta name="color-scheme" content="dark light" />
   
   <!-- Tailwind via CDN for fast prototyping. Replace with a build step later. -->
