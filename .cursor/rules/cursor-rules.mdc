@@ -1,0 +1,31 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+
+/// rules for modern software engineering in web development projects
+
+// 1. use robust, well-supported frameworks (e.g., django, flask, react, vue) for rapid, maintainable development
+// 2. always prefer simple, modular code; avoid unnecessary complexity
+// 3. follow established design patterns (mvc, mvvm, etc.) where appropriate
+// 4. write clear, concise docstrings for all modules, classes, and functions
+// 5. use self-documenting variable and function names that describe their purpose
+// 6. add comments to explain non-obvious logic, architectural decisions, and tradeoffs
+// 7. keep code DRY (don't repeat yourself); refactor duplicated logic into reusable functions or classes
+// 8. write extensive unit and integration tests for all critical code paths
+// 9. use version control (e.g., git) and follow best practices for commits and code reviews
+// 10. prefer built-in and standard libraries; only add dependencies when necessary
+// 11. document setup, configuration, and usage in markdown files (e.g., README.md)
+// 12. ensure code is easy to read, understand, and maintain for future developers
+// 13. prioritize security, accessibility, and performance in all code
+// 14. use type hints and static analysis tools where possible to catch errors early
+// 15. keep configuration and secrets out of source code (use environment variables or config files)
+// 16. make the comments / docstrings a bit more clear, explaining the design decisions, intuition, rationale, and what it is doing? Avoid comments that are redundant, e.g. don't say /* Initialize the application */ for an init() function. Say what is being initialized and why, error handling, design rationales, etc.
+
+/// context guidelines
+
+// always ensure that your code is CORRECT. if you have any uncertainty, pretend you 
+// are needing more clarity than usual, so ask questions before implementing code if
+// you're confused about anything. 

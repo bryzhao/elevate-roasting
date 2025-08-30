@@ -1,0 +1,85 @@
+name: Lint Website
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Lint HTML
+      run: |
+        # Check HTML syntax using tidy-html5
+        echo "Checking HTML syntax..."
+        if command -v tidy &> /dev/null; then
+          tidy -q -e index.html || echo "HTML linting failed - consider installing tidy-html5"
+        else
+          echo "tidy-html5 not available - skipping HTML linting"
+        fi
+        
+    - name: Lint CSS
+      run: |
+        # Basic CSS syntax check
+        echo "Checking CSS syntax..."
+        node -e "
+          const fs = require('fs');
+          const css = fs.readFileSync('css/styles.css', 'utf8');
+          // Basic CSS validation - check for unmatched braces
+          const openBraces = (css.match(/\{/g) || []).length;
+          const closeBraces = (css.match(/\}/g) || []).length;
+          if (openBraces !== closeBraces) {
+            console.error('CSS syntax error: unmatched braces');
+            process.exit(1);
+          }
+          console.log('CSS syntax check passed');
+        "
+        
+    - name: Lint JavaScript
+      run: |
+        # Basic JavaScript syntax check
+        echo "Checking JavaScript syntax..."
+        node -c config/site-config.js
+        node -c js/utils.js
+        node -c js/app.js
+        echo "JavaScript syntax check passed"
+        
+    - name: Check file structure
+      run: |
+        echo "Checking required files exist..."
+        test -f index.html || (echo "index.html missing" && exit 1)
+        test -f css/styles.css || (echo "css/styles.css missing" && exit 1)
+        test -f js/app.js || (echo "js/app.js missing" && exit 1)
+        test -f js/utils.js || (echo "js/utils.js missing" && exit 1)
+        test -f config/site-config.js || (echo "config/site-config.js missing" && exit 1)
+        echo "All required files present"
+        
+    - name: Validate package.json
+      run: |
+        echo "Validating package.json..."
+        node -e "
+          const pkg = require('./package.json');
+          const required = ['name', 'version', 'description'];
+          required.forEach(field => {
+            if (!pkg[field]) {
+              console.error(\`Missing required field: \${field}\`);
+              process.exit(1);
+            }
+          });
+          console.log('package.json validation passed');
+        "

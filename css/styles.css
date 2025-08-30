@@ -1,0 +1,573 @@
+/**
+ * Main stylesheet for Elevate Roasting
+ * 
+ * This stylesheet implements a modern, minimalist design system with
+ * a focus on readability, accessibility, and performance. The design
+ * prioritizes content over decoration while maintaining visual appeal.
+ * 
+ * Design principles:
+ * - Mobile-first responsive design
+ * - Consistent spacing and typography scale
+ * - High contrast for accessibility
+ * - Smooth animations for user feedback
+ * - Semantic HTML support
+ * 
+ * The CSS uses custom properties for easy theming and maintenance,
+ * with a modular component approach for reusability.
+ */
+
+/* CSS custom properties for consistent theming and easy maintenance
+ * 
+ * These variables define the design system's color palette, spacing,
+ * and typography scale. Using custom properties enables easy theme
+ * switching and ensures consistency across all components.
+ * 
+ * Color choices prioritize accessibility with high contrast ratios
+ * and support for both light and dark themes.
+ */
+:root {
+  --ring: 0 0 0 2px rgba(255,255,255,.08); /* Focus ring for accessibility */
+  --primary-color: #ffffff; /* High contrast white for readability */
+  --secondary-color: #a3a3a3; /* Muted gray for secondary text */
+  --border-color: #404040; /* Subtle borders that don't compete with content */
+  --background-color: #000000; /* Dark background for coffee aesthetic */
+  --text-primary: #ffffff; /* Primary text color for maximum contrast */
+  --text-secondary: #a3a3a3; /* Secondary text for hierarchy */
+  --text-muted: #737373; /* Muted text for less important information */
+  --border-light: #525252; /* Lighter borders for subtle separation */
+  --border-dark: #262626; /* Darker borders for strong separation */
+  
+  /* Spacing scale based on 4px grid system
+   * 
+   * Consistent spacing ensures visual rhythm and reduces design decisions.
+   * The scale progresses geometrically for natural visual hierarchy.
+   */
+  --space-xs: 0.25rem;  /* 4px - minimal spacing */
+  --space-sm: 0.5rem;   /* 8px - small spacing */
+  --space-md: 1rem;     /* 16px - base spacing */
+  --space-lg: 1.5rem;   /* 24px - large spacing */
+  --space-xl: 2rem;     /* 32px - extra large spacing */
+  --space-2xl: 3rem;    /* 48px - section spacing */
+  
+  /* Typography scale for consistent text sizing
+   * 
+   * Uses rem units for accessibility and relative sizing.
+   * Scale provides clear hierarchy while maintaining readability.
+   */
+  --text-xs: 0.75rem;   /* 12px - small labels */
+  --text-sm: 0.875rem;  /* 14px - body text */
+  --text-base: 1rem;    /* 16px - base text size */
+  --text-lg: 1.125rem;  /* 18px - large body text */
+  --text-xl: 1.25rem;   /* 20px - small headings */
+  --text-2xl: 1.5rem;   /* 24px - section headings */
+  --text-3xl: 1.875rem; /* 30px - large headings */
+  --text-4xl: 2.25rem;  /* 36px - hero headings */
+  --text-5xl: 3rem;     /* 48px - main hero text */
+}
+
+/* Base styles for consistent rendering across browsers
+ * 
+ * Resets browser defaults and establishes foundation styles.
+ * Uses modern CSS properties for better performance and accessibility.
+ */
+* {
+  box-sizing: border-box; /* Include padding and border in element sizing */
+}
+
+html {
+  /* Apple system font stack for optimal readability
+   * 
+   * Uses native system fonts for better performance and familiarity.
+   * Fallback to generic sans-serif ensures compatibility across platforms.
+   */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", 
+               Segoe UI, Roboto, "Helvetica Neue", Arial, system-ui, "Noto Sans", sans-serif;
+  scroll-behavior: smooth; /* Smooth scrolling for better UX */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  line-height: 1.6; /* Optimal line height for readability */
+  -webkit-font-smoothing: antialiased; /* Crisp text on WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Crisp text on Firefox */
+}
+
+/* Layout utilities for consistent page structure
+ * 
+ * These classes provide common layout patterns used throughout
+ * the application. They're designed to work together for flexible
+ * and responsive layouts.
+ */
+.container {
+  max-width: 1000px; /* Optimal reading width for content */
+  margin: 0 auto; /* Center content horizontally */
+  padding: 0 var(--space-md); /* Consistent horizontal padding */
+}
+
+.section {
+  padding: var(--space-2xl) 0; /* Generous vertical spacing between sections */
+}
+
+.section-divider {
+  border-top: 1px solid var(--border-light); /* Subtle section separation */
+}
+
+/* Typography utilities for consistent text styling
+ * 
+ * These classes provide semantic text styling that can be applied
+ * to any element. They maintain the design system's typography scale.
+ */
+.text-heading {
+  font-weight: 600; /* Semi-bold for headings */
+  letter-spacing: -0.025em; /* Tighter letter spacing for modern look */
+  line-height: 1.1; /* Tighter line height for headings */
+}
+
+.text-body {
+  color: var(--text-secondary); /* Secondary text color for body content */
+}
+
+.text-muted {
+  color: var(--text-muted); /* Muted color for less important text */
+}
+
+/* Button component system for consistent interactions
+ * 
+ * Provides a complete button system with different styles and states.
+ * Uses CSS custom properties for easy theming and maintains
+ * accessibility with proper focus states.
+ */
+.btn {
+  display: inline-flex; /* Flexbox for better alignment */
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md) var(--space-lg); /* Comfortable touch targets */
+  border-radius: 1rem; /* Rounded corners for modern aesthetic */
+  font-weight: 500; /* Medium weight for button text */
+  text-decoration: none;
+  transition: all 0.2s ease-in-out; /* Smooth transitions for feedback */
+  cursor: pointer;
+  border: 1px solid transparent; /* Transparent border for consistent sizing */
+  font-size: var(--text-sm); /* Appropriate text size for buttons */
+}
+
+.btn-primary {
+  background-color: transparent; /* Transparent background for minimal look */
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--ring); /* Focus ring effect on hover */
+  transform: translateY(-1px); /* Subtle lift effect */
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--border-light);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary-color); /* Highlight border on hover */
+  transform: translateY(-1px);
+}
+
+.btn-small {
+  padding: var(--space-sm) var(--space-md); /* Smaller padding for compact buttons */
+  font-size: var(--text-xs);
+  border-radius: 0.75rem; /* Slightly smaller radius for small buttons */
+}
+
+/* Form components for consistent input styling
+ * 
+ * Provides accessible form elements with proper focus states
+ * and consistent styling across different input types.
+ */
+.input-field {
+  width: 100%;
+  padding: var(--space-md);
+  border: 1px solid var(--border-light);
+  border-radius: 0.75rem; /* Rounded corners for modern look */
+  background-color: transparent; /* Transparent background */
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  transition: all 0.2s ease-in-out; /* Smooth transitions for focus states */
+}
+
+.input-field::placeholder {
+  color: var(--text-muted); /* Muted color for placeholder text */
+}
+
+.input-field:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: var(--primary-color); /* Highlight border on focus */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1); /* Subtle focus ring */
+}
+
+/* Card component system for content containers
+ * 
+ * Provides consistent card styling for content blocks like
+ * coffee drops. Includes hover effects for interactive feedback.
+ */
+.card {
+  border: 1px solid var(--border-light);
+  border-radius: 1rem; /* Consistent with button styling */
+  overflow: hidden; /* Clip content to rounded corners */
+  background-color: transparent;
+  transition: all 0.2s ease-in-out; /* Smooth transitions for interactions */
+}
+
+.card:hover {
+  border-color: var(--border-dark); /* Darker border on hover */
+  transform: translateY(-2px); /* Lift effect for interactivity */
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 4/3; /* Consistent image aspect ratio */
+  background-size: cover; /* Fill container while maintaining aspect ratio */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-content {
+  padding: var(--space-md); /* Consistent internal spacing */
+}
+
+.card-title {
+  font-weight: 500;
+  margin: 0 0 var(--space-xs) 0;
+  color: var(--text-primary);
+}
+
+.card-description {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-md) 0;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-md);
+}
+
+.card-price {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* Navigation component for consistent site navigation
+ * 
+ * Provides flexible navigation styling that works for both
+ * main navigation and footer links. Includes proper hover states.
+ */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg); /* Consistent spacing between nav items */
+}
+
+.nav-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: opacity 0.2s ease-in-out; /* Smooth opacity transition */
+}
+
+.nav-link:hover {
+  opacity: 0.8; /* Subtle hover effect */
+}
+
+/* Header component with sticky positioning
+ * 
+ * Implements a sticky header that remains visible during scrolling.
+ * Uses backdrop blur for modern aesthetic and better readability.
+ */
+.header {
+  position: sticky; /* Sticky positioning for persistent navigation */
+  top: 0;
+  z-index: 10; /* High z-index to stay above other content */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(8px); /* Blur effect for modern look */
+  border-bottom: 1px solid var(--border-light);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: var(--text-xl);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.logo-accent {
+  color: var(--text-secondary); /* Muted color for brand separation */
+}
+
+/* Hero section for main page content
+ * 
+ * Implements a responsive hero layout that adapts to different
+ * screen sizes. Uses CSS Grid for flexible layouts.
+ */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column on mobile */
+  gap: var(--space-2xl);
+  align-items: center;
+  padding: var(--space-2xl) 0;
+}
+
+/* Responsive breakpoint for tablet and desktop */
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr 1fr; /* Two columns on larger screens */
+  }
+}
+
+.hero-content {
+  animation: fadeInUp 0.6s ease-out; /* Entrance animation for engagement */
+}
+
+.hero-title {
+  font-size: var(--text-4xl); /* Large text for impact */
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: var(--space-md);
+}
+
+/* Responsive typography for different screen sizes */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: var(--text-5xl); /* Even larger on desktop */
+  }
+}
+
+.hero-description {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.hero-image {
+  aspect-ratio: 4/3; /* Consistent aspect ratio */
+  border-radius: 1rem;
+  border: 1px solid var(--border-light);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Grid layout system for flexible content arrangement
+ * 
+ * Provides responsive grid layouts that adapt to content and screen size.
+ * Uses CSS Grid for modern layout capabilities.
+ */
+.grid {
+  display: grid;
+  gap: var(--space-lg); /* Consistent gap between grid items */
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive 2-column grid */
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive 3-column grid */
+}
+
+/* Responsive breakpoints for grid layouts */
+@media (min-width: 640px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr); /* Fixed 2 columns on tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr); /* Fixed 3 columns on desktop */
+  }
+}
+
+/* Animation system for smooth user interactions
+ * 
+ * Provides consistent animations using CSS keyframes for performance.
+ * Animations are subtle and purposeful, enhancing rather than distracting.
+ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below final position */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out; /* Smooth fade in animation */
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out; /* Fade in with upward movement */
+}
+
+/* Footer component for site completion
+ * 
+ * Provides consistent footer styling with responsive layout.
+ * Includes proper spacing and typography for readability.
+ */
+.footer {
+  border-top: 1px solid var(--border-light);
+  padding: var(--space-2xl) 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column; /* Stack vertically on mobile */
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+/* Responsive footer layout */
+@media (min-width: 640px) {
+  .footer-content {
+    flex-direction: row; /* Side by side on larger screens */
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+/* Utility classes for common styling needs
+ * 
+ * These classes provide quick styling solutions for common patterns.
+ * They're designed to be composable and work well together.
+ */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Margin utilities using design system spacing */
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--space-xs); }
+.mb-2 { margin-bottom: var(--space-sm); }
+.mb-3 { margin-bottom: var(--space-md); }
+.mb-4 { margin-bottom: var(--space-lg); }
+.mb-5 { margin-bottom: var(--space-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--space-xs); }
+.mt-2 { margin-top: var(--space-sm); }
+.mt-3 { margin-top: var(--space-md); }
+.mt-4 { margin-top: var(--space-lg); }
+.mt-5 { margin-top: var(--space-xl); }
+
+/* Responsive visibility utilities
+ * 
+ * These classes control element visibility based on screen size.
+ * Useful for showing/hiding content appropriately on different devices.
+ */
+.hidden {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .sm\:block {
+    display: block;
+  }
+  
+  .sm\:hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:block {
+    display: block;
+  }
+  
+  .md\:hidden {
+    display: none;
+  }
+}
+
+/* Accessibility focus styles
+ * 
+ * Ensures all interactive elements have visible focus indicators
+ * for keyboard navigation and screen reader compatibility.
+ */
+.btn:focus,
+.input-field:focus,
+.nav-link:focus,
+.footer-link:focus {
+  outline: 2px solid var(--primary-color); /* High contrast focus outline */
+  outline-offset: 2px; /* Offset for better visibility */
+}
+
+/* Print styles for better printed output
+ * 
+ * Optimizes the site for printing by hiding unnecessary elements
+ * and ensuring good contrast on paper.
+ */
+@media print {
+  .header,
+  .footer,
+  .btn {
+    display: none; /* Hide navigation and interactive elements */
+  }
+  
+  body {
+    background: white; /* White background for printing */
+    color: black; /* Black text for maximum contrast */
+  }
+}

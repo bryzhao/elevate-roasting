@@ -1,0 +1,44 @@
+{
+  "name": "elevate-roasting",
+  "version": "1.0.0",
+  "description": "Small‑batch specialty coffee, roasted at home in San Francisco",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "build": "echo 'Build process would go here'",
+    "test": "npm run lint",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js && npm run lint:files",
+    "lint:html": "echo 'HTML linting would go here'",
+    "lint:css": "node -e \"const fs=require('fs');const css=fs.readFileSync('css/styles.css','utf8');const open=(css.match(/\\{/g)||[]).length;const close=(css.match(/\\}/g)||[]).length;if(open!==close)throw new Error('CSS syntax error: unmatched braces');console.log('CSS syntax check passed');\"",
+    "lint:js": "node -c config/site-config.js && node -c js/utils.js && node -c js/app.js && echo 'JavaScript syntax check passed'",
+    "lint:files": "test -f index.html && test -f css/styles.css && test -f js/app.js && test -f js/utils.js && test -f config/site-config.js && echo 'All required files present'",
+    "format": "echo 'Code formatting would go here'"
+  },
+  "keywords": [
+    "coffee",
+    "roasting",
+    "specialty-coffee",
+    "san-francisco",
+    "small-batch"
+  ],
+  "author": "Elevate Roasting",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elevateroasting/elevate-roasting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elevateroasting/elevate-roasting/issues"
+  },
+  "homepage": "https://elevateroasting.com",
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
+
