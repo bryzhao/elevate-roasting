@@ -24,6 +24,59 @@ const siteConfig = {
     year: new Date().getFullYear() // Dynamic year for copyright notices
   },
 
+  // Navigation configuration for the main menu
+  // Supports both simple buttons and dropdown menus
+  navigation: {
+    items: [
+      {
+        id: 'home',
+        label: 'Home',
+        type: 'button', // Button that links to home page
+        href: '/'
+      },
+      {
+        id: 'subscriptions',
+        label: 'Subscriptions',
+        type: 'button', // Button that links to subscriptions page
+        href: '/subscriptions.html'
+      },
+      {
+        id: 'coffee',
+        label: 'Coffee',
+        type: 'dropdown',
+        items: [
+          {
+            id: 'single-origin',
+            label: 'Single Origin',
+            href: '/coffee/single-origin.html'
+          },
+          {
+            id: 'espresso',
+            label: 'Espresso',
+            href: '/coffee/espresso.html'
+          }
+        ]
+      },
+      {
+        id: 'about',
+        label: 'About Us',
+        type: 'dropdown',
+        items: [
+          {
+            id: 'our-story',
+            label: 'Our Story',
+            href: '/about/our-story.html'
+          },
+          {
+            id: 'contact',
+            label: 'Contact',
+            href: '/about/contact.html'
+          }
+        ]
+      }
+    ]
+  },
+
   // Social media configuration with fallback handling
   // URLs are set to placeholder values until real accounts are established
   // The structure supports easy addition of new platforms
@@ -84,7 +137,7 @@ const siteConfig = {
   // The interval field enables automatic recurring billing
   subscriptionOptions: [
     {
-      id: 'weekly', // Used as Stripe product ID
+      id: 'weekly',
       name: 'Weekly',
       price: '$18',
       description: 'Fresh coffee every week',
@@ -125,7 +178,8 @@ const siteConfig = {
     stripeEnabled: false, // Payment processing - enable when Stripe is configured
     emailServiceEnabled: false, // Email marketing - enable when service is chosen
     instagramFeedEnabled: false, // Social media integration - enable when API is ready
-    analyticsEnabled: false // User tracking - enable when analytics are configured
+    analyticsEnabled: false, // User tracking - enable when analytics are configured
+    scrollToTopEnabled: false // Scroll to top functionality - enable if needed
   }
 };
 

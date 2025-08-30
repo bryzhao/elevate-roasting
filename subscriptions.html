@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Subscriptions - Elevate Roasting</title>
+  <meta name="description" content="Choose your coffee subscription plan. Weekly, bi-weekly, or monthly deliveries of fresh roasted coffee." />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="color-scheme" content="dark light" />
+  
+  <!-- Tailwind via CDN for fast prototyping. Replace with a build step later. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="antialiased bg-black text-white">
+  <!-- Site header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          Elevate<span class="logo-accent">Roasting</span>
+        </a>
+        <nav class="nav" id="main-nav">
+          <!-- Navigation items will be populated by JavaScript -->
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="hero-title text-heading mb-4">
+          Coffee Subscriptions
+        </h1>
+        <p class="hero-description text-body max-w-2xl mx-auto">
+          Never run out of fresh coffee again. Choose your perfect subscription plan 
+          and get hand-roasted coffee delivered to your door on your schedule.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription options -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="grid grid-3" id="subscription-grid">
+        <!-- Subscription cards will be populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section section-divider">
+    <div class="container">
+      <h2 class="text-2xl font-semibold tracking-tight text-heading text-center mb-8">
+        How It Works
+      </h2>
+      <div class="grid grid-2">
+        <div class="text-center">
+          <div class="text-4xl mb-4">1</div>
+          <h3 class="text-lg font-medium mb-2">Choose Your Plan</h3>
+          <p class="text-body">Select weekly, bi-weekly, or monthly delivery based on your coffee consumption.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">2</div>
+          <h3 class="text-lg font-medium mb-2">Fresh Roasting</h3>
+          <p class="text-body">We roast your coffee to order, ensuring maximum freshness and flavor.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">3</div>
+          <h3 class="text-lg font-medium mb-2">Delivered to You</h3>
+          <p class="text-body">Your coffee arrives at your door, ready to brew and enjoy.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">4</div>
+          <h3 class="text-lg font-medium mb-2">Flexible & Cancel Anytime</h3>
+          <p class="text-body">Pause, modify, or cancel your subscription at any time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="text-sm text-muted">© <span id="current-year"></span> Elevate Roasting • San Francisco, CA</p>
+        <div class="footer-links">
+          <a href="mailto:hello@elevateroasting.com" class="footer-link">
+            hello@elevateroasting.com
+          </a>
+          <a href="#" class="footer-link" id="instagram-link">
+            Instagram
+          </a>
+          <a href="#" class="footer-link" id="github-link">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript modules -->
+  <script src="config/site-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Additional script for subscriptions page
+    document.addEventListener('DOMContentLoaded', () => {
+      // Populate subscription options
+      const subscriptionGrid = document.getElementById('subscription-grid');
+      if (subscriptionGrid && window.siteConfig) {
+        const options = window.siteConfig.subscriptionOptions;
+        const subscriptionHTML = options.map(option => `
+          <div class="card text-center">
+            <div class="card-content">
+              <h3 class="card-title">${option.name}</h3>
+              <div class="text-3xl font-semibold mb-2">${option.price}</div>
+              <p class="card-description">${option.description}</p>
+              <button class="btn btn-primary mt-4" onclick="handleSubscription('${option.id}')">
+                Subscribe Now
+              </button>
+            </div>
+          </div>
+        `).join('');
+        subscriptionGrid.innerHTML = subscriptionHTML;
+      }
+    });
+
+    function handleSubscription(planId) {
+      // TODO: Integrate with Stripe or payment processor
+      alert(`Subscription to ${planId} plan would be processed here.`);
+    }
+  </script>
+</body>
+</html>

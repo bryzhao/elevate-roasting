@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Espresso Coffee - Elevate Roasting</title>
+  <meta name="description" content="Discover our carefully crafted espresso blends. Perfect for espresso machines and traditional brewing methods." />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="color-scheme" content="dark light" />
+  
+  <!-- Tailwind via CDN for fast prototyping. Replace with a build step later. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body class="antialiased bg-black text-white">
+  <!-- Site header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          Elevate<span class="logo-accent">Roasting</span>
+        </a>
+        <nav class="nav" id="main-nav">
+          <!-- Navigation items will be populated by JavaScript -->
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="hero-title text-heading mb-4">
+          Espresso Coffee
+        </h1>
+        <p class="hero-description text-body max-w-2xl mx-auto">
+          Our espresso blends are carefully crafted to deliver the perfect balance 
+          of sweetness, acidity, and body. Whether you're pulling shots or brewing 
+          traditional methods, our espresso roasts shine.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Espresso blends -->
+  <section class="section section-divider">
+    <div class="container">
+      <h2 class="text-2xl font-semibold tracking-tight text-heading text-center mb-8">
+        Espresso Blends
+      </h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop')"></div>
+          <div class="card-content">
+            <h3 class="card-title">Classic Espresso Blend</h3>
+            <p class="card-description">Balanced and smooth with notes of chocolate, caramel, and a hint of citrus.</p>
+            <div class="mt-3 text-sm text-muted">
+              <div><strong>Roast Level:</strong> Medium-Dark</div>
+              <div><strong>Body:</strong> Full</div>
+              <div><strong>Acidity:</strong> Medium</div>
+            </div>
+            <div class="card-footer">
+              <span class="card-price">$16 / 200g</span>
+              <button class="btn btn-small">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1503481766315-7a586b20f66f?q=80&w=1200&auto=format&fit=crop')"></div>
+          <div class="card-content">
+            <h3 class="card-title">Single Origin Espresso</h3>
+            <p class="card-description">Bright and complex with floral notes and a clean finish.</p>
+            <div class="mt-3 text-sm text-muted">
+              <div><strong>Roast Level:</strong> Medium</div>
+              <div><strong>Body:</strong> Medium</div>
+              <div><strong>Acidity:</strong> Bright</div>
+            </div>
+            <div class="card-footer">
+              <span class="card-price">$18 / 200g</span>
+              <button class="btn btn-small">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brewing guide -->
+  <section class="section section-divider">
+    <div class="container">
+      <h2 class="text-2xl font-semibold tracking-tight text-heading text-center mb-8">
+        Espresso Brewing Guide
+      </h2>
+      <div class="grid grid-2">
+        <div>
+          <h3 class="text-lg font-medium mb-3">Espresso Machine</h3>
+          <ul class="space-y-2 text-body">
+            <li><strong>Dose:</strong> 18-21g ground coffee</li>
+            <li><strong>Yield:</strong> 36-42g espresso</li>
+            <li><strong>Time:</strong> 25-30 seconds</li>
+            <li><strong>Temperature:</strong> 90-96°C (195-205°F)</li>
+            <li><strong>Pressure:</strong> 9 bars</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-medium mb-3">Alternative Methods</h3>
+          <ul class="space-y-2 text-body">
+            <li><strong>Moka Pot:</strong> Fine grind, 1:7 ratio</li>
+            <li><strong>AeroPress:</strong> Fine grind, 1:6 ratio, 2 minutes</li>
+            <li><strong>Pour Over:</strong> Medium-fine grind, 1:16 ratio</li>
+            <li><strong>French Press:</strong> Coarse grind, 1:15 ratio, 4 minutes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="text-sm text-muted">© <span id="current-year"></span> Elevate Roasting • San Francisco, CA</p>
+        <div class="footer-links">
+          <a href="mailto:hello@elevateroasting.com" class="footer-link">
+            hello@elevateroasting.com
+          </a>
+          <a href="#" class="footer-link" id="instagram-link">
+            Instagram
+          </a>
+          <a href="#" class="footer-link" id="github-link">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript modules -->
+  <script src="../config/site-config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

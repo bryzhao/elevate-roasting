@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - Elevate Roasting</title>
+  <meta name="description" content="Get in touch with Elevate Roasting. We'd love to hear from you about coffee, orders, or just to say hello." />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="color-scheme" content="dark light" />
+  
+  <!-- Tailwind via CDN for fast prototyping. Replace with a build step later. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body class="antialiased bg-black text-white">
+  <!-- Site header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          Elevate<span class="logo-accent">Roasting</span>
+        </a>
+        <nav class="nav" id="main-nav">
+          <!-- Navigation items will be populated by JavaScript -->
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="hero-title text-heading mb-4">
+          Contact Us
+        </h1>
+        <p class="hero-description text-body max-w-2xl mx-auto">
+          Have questions about our coffee, want to place an order, or just want to chat? 
+          We'd love to hear from you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact information -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="grid grid-2">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight text-heading mb-6">
+            Get in Touch
+          </h2>
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-lg font-medium mb-2">Email</h3>
+              <a href="mailto:hello@elevateroasting.com" class="text-body hover:opacity-80">
+                hello@elevateroasting.com
+              </a>
+            </div>
+            <div>
+              <h3 class="text-lg font-medium mb-2">Location</h3>
+              <p class="text-body">San Francisco, CA</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-medium mb-2">Hours</h3>
+              <p class="text-body">Monday - Friday: 9AM - 6PM PST</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight text-heading mb-6">
+            Send us a Message
+          </h2>
+          <form class="space-y-4" id="contact-form">
+            <div>
+              <label for="name" class="block text-sm font-medium mb-2">Name</label>
+              <input type="text" id="name" name="name" required class="input-field" placeholder="Your name">
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium mb-2">Email</label>
+              <input type="email" id="email" name="email" required class="input-field" placeholder="your@email.com">
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+              <select id="subject" name="subject" class="input-field">
+                <option value="">Select a subject</option>
+                <option value="order">Order Inquiry</option>
+                <option value="subscription">Subscription Question</option>
+                <option value="coffee">Coffee Questions</option>
+                <option value="general">General Inquiry</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium mb-2">Message</label>
+              <textarea id="message" name="message" required rows="4" class="input-field" placeholder="Your message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-divider">
+    <div class="container">
+      <h2 class="text-2xl font-semibold tracking-tight text-heading text-center mb-8">
+        Frequently Asked Questions
+      </h2>
+      <div class="grid grid-2">
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-lg font-medium mb-2">How fresh is your coffee?</h3>
+            <p class="text-body">We roast all coffee to order, ensuring maximum freshness. Coffee is typically shipped within 24-48 hours of roasting.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-medium mb-2">Do you ship nationwide?</h3>
+            <p class="text-body">Yes, we ship to all 50 states. Shipping is free on orders over $50.</p>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-lg font-medium mb-2">Can I cancel my subscription?</h3>
+            <p class="text-body">Absolutely! You can pause, modify, or cancel your subscription at any time through your account.</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-medium mb-2">What's your return policy?</h3>
+            <p class="text-body">If you're not satisfied with your coffee, we'll gladly replace it or provide a full refund within 30 days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="text-sm text-muted">© <span id="current-year"></span> Elevate Roasting • San Francisco, CA</p>
+        <div class="footer-links">
+          <a href="mailto:hello@elevateroasting.com" class="footer-link">
+            hello@elevateroasting.com
+          </a>
+          <a href="#" class="footer-link" id="instagram-link">
+            Instagram
+          </a>
+          <a href="#" class="footer-link" id="github-link">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript modules -->
+  <script src="../config/site-config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    // Contact form handling
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          // Get form data
+          const formData = new FormData(contactForm);
+          const data = Object.fromEntries(formData);
+          
+          // TODO: Send form data to backend
+          console.log('Contact form submitted:', data);
+          
+          // Show success message
+          alert('Thank you for your message! We\'ll get back to you soon.');
+          
+          // Reset form
+          contactForm.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

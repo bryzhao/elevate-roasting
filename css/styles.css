@@ -266,6 +266,7 @@ body {
  * 
  * Provides flexible navigation styling that works for both
  * main navigation and footer links. Includes proper hover states.
+ * Supports both simple buttons and dropdown menus.
  */
 .nav {
   display: flex;
@@ -278,10 +279,91 @@ body {
   text-decoration: none;
   font-size: var(--text-sm);
   transition: opacity 0.2s ease-in-out; /* Smooth opacity transition */
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
 }
 
 .nav-link:hover {
   opacity: 0.8; /* Subtle hover effect */
+}
+
+/* Dropdown navigation styles */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+.nav-dropdown-toggle:hover {
+  opacity: 0.8;
+}
+
+.nav-dropdown-toggle::after {
+  content: '▼';
+  font-size: 0.7em;
+  transition: transform 0.2s ease-in-out;
+}
+
+.nav-dropdown.active .nav-dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  padding: var(--space-sm) 0;
+  min-width: 150px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease-in-out;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.nav-dropdown.active .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: background-color 0.2s ease-in-out;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nav-dropdown-item:hover {
+  background-color: var(--border-light);
 }
 
 /* Header component with sticky positioning

@@ -180,22 +180,113 @@ class ElevateRoastingApp {
       });
     }
 
-    // Smooth scrolling for navigation links
-    // Uses event delegation to handle all anchor links with hash targets
-    const navLinks = document.querySelectorAll('a[href^="#"]');
-    navLinks.forEach(link => {
-      this.utils.dom.addEventListener(link, 'click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = this.utils.dom.getElement(targetId);
-        if (targetElement) {
-          this.utils.animation.scrollTo(targetElement, 80); // Offset for fixed header
-        }
-      });
-    });
+    // Setup navigation system
+    this.setupNavigation();
 
     // Future enhancement: lazy loading for performance
     this.setupLazyLoading();
+  }
+
+  /**
+   * Setup navigation system with dropdowns and event handling
+   * 
+   * Creates navigation elements from configuration and sets up
+   * proper event handling for dropdowns and navigation actions.
+   */
+  setupNavigation() {
+    const navContainer = this.utils.dom.getElement('main-nav');
+    if (!navContainer || !this.config.navigation) {
+      return;
+    }
+
+    // Generate navigation HTML from configuration
+    const navHTML = this.config.navigation.items.map(item => {
+      if (item.type === 'dropdown') {
+        return this.createDropdownHTML(item);
+      } else {
+        return this.createNavButtonHTML(item);
+      }
+    }).join('');
+
+    navContainer.innerHTML = navHTML;
+
+    // Setup dropdown event listeners
+    this.setupDropdownListeners();
+  }
+
+  /**
+   * Create HTML for navigation buttons
+   */
+  createNavButtonHTML(item) {
+    if (item.href) {
+      return `<a class="nav-link" href="${item.href}">${item.label}</a>`;
+    }
+    return `<button class="nav-link">${item.label}</button>`;
+  }
+
+  /**
+   * Create HTML for dropdown navigation
+   */
+  createDropdownHTML(item) {
+    const dropdownItems = item.items.map(dropdownItem => 
+      `<a class="nav-dropdown-item" href="${dropdownItem.href}">${dropdownItem.label}</a>`
+    ).join('');
+
+    return `
+      <div class="nav-dropdown" data-dropdown="${item.id}">
+        <button class="nav-dropdown-toggle">${item.label}</button>
+        <div class="nav-dropdown-menu">
+          ${dropdownItems}
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * Setup event listeners for dropdown functionality
+   */
+  setupDropdownListeners() {
+    // Handle dropdown toggles
+    document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+      this.utils.dom.addEventListener(toggle, 'click', (e) => {
+        e.preventDefault();
+        const dropdown = toggle.closest('.nav-dropdown');
+        this.toggleDropdown(dropdown);
+      });
+    });
+
+
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-dropdown')) {
+        this.closeAllDropdowns();
+      }
+    });
+  }
+
+  /**
+   * Toggle dropdown visibility
+   */
+  toggleDropdown(dropdown) {
+    const isActive = dropdown.classList.contains('active');
+    
+    // Close all other dropdowns
+    this.closeAllDropdowns();
+    
+    // Toggle current dropdown
+    if (!isActive) {
+      dropdown.classList.add('active');
+    }
+  }
+
+  /**
+   * Close all dropdown menus
+   */
+  closeAllDropdowns() {
+    document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+      dropdown.classList.remove('active');
+    });
   }
 
   /**

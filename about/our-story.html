@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Our Story - Elevate Roasting</title>
+  <meta name="description" content="Learn about the story behind Elevate Roasting. From humble beginnings to crafting exceptional coffee experiences." />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="color-scheme" content="dark light" />
+  
+  <!-- Tailwind via CDN for fast prototyping. Replace with a build step later. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body class="antialiased bg-black text-white">
+  <!-- Site header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          Elevate<span class="logo-accent">Roasting</span>
+        </a>
+        <nav class="nav" id="main-nav">
+          <!-- Navigation items will be populated by JavaScript -->
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="hero-title text-heading mb-4">
+          Our Story
+        </h1>
+        <p class="hero-description text-body max-w-2xl mx-auto">
+          The journey of Elevate Roasting began with a simple passion for great coffee 
+          and a desire to share that passion with others.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story content -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="grid grid-2">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight text-heading mb-4">
+            The Beginning
+          </h2>
+          <p class="text-body mb-4">
+            Elevate Roasting started as a home roasting experiment in a small San Francisco 
+            apartment. What began with a simple popcorn popper and green coffee beans 
+            quickly evolved into a passion for understanding the art and science of coffee roasting.
+          </p>
+          <p class="text-body mb-4">
+            We discovered that great coffee isn't just about the beans—it's about the 
+            careful attention to every step of the process, from sourcing to roasting 
+            to brewing. This philosophy drives everything we do.
+          </p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight text-heading mb-4">
+            Our Mission
+          </h2>
+          <p class="text-body mb-4">
+            We believe that exceptional coffee should be accessible to everyone. Our mission 
+            is to roast coffee that not only tastes amazing but also tells a story of 
+            the people and places behind each bean.
+          </p>
+          <p class="text-body mb-4">
+            We're committed to transparency in our sourcing, precision in our roasting, 
+            and education in our approach. Every batch is roasted with care and attention 
+            to bring out the unique characteristics of each origin.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section section-divider">
+    <div class="container">
+      <h2 class="text-2xl font-semibold tracking-tight text-heading text-center mb-8">
+        Our Values
+      </h2>
+      <div class="grid grid-3">
+        <div class="text-center">
+          <h3 class="text-lg font-medium mb-2">Quality</h3>
+          <p class="text-body">We never compromise on quality, from bean selection to final roast.</p>
+        </div>
+        <div class="text-center">
+          <h3 class="text-lg font-medium mb-2">Transparency</h3>
+          <p class="text-body">We're open about our sourcing, roasting process, and pricing.</p>
+        </div>
+        <div class="text-center">
+          <h3 class="text-lg font-medium mb-2">Community</h3>
+          <p class="text-body">We believe in building connections through shared coffee experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="text-sm text-muted">© <span id="current-year"></span> Elevate Roasting • San Francisco, CA</p>
+        <div class="footer-links">
+          <a href="mailto:hello@elevateroasting.com" class="footer-link">
+            hello@elevateroasting.com
+          </a>
+          <a href="#" class="footer-link" id="instagram-link">
+            Instagram
+          </a>
+          <a href="#" class="footer-link" id="github-link">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript modules -->
+  <script src="../config/site-config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

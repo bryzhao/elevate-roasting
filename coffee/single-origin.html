@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Single Origin Coffee - Elevate Roasting</title>
+  <meta name="description" content="Explore our single origin coffees from around the world. Each origin tells a unique story of terroir and tradition." />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="color-scheme" content="dark light" />
+  
+  <!-- Tailwind via CDN for fast prototyping. Replace with a build step later. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+
+<body class="antialiased bg-black text-white">
+  <!-- Site header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          Elevate<span class="logo-accent">Roasting</span>
+        </a>
+        <nav class="nav" id="main-nav">
+          <!-- Navigation items will be populated by JavaScript -->
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero section -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center">
+        <h1 class="hero-title text-heading mb-4">
+          Single Origin Coffee
+        </h1>
+        <p class="hero-description text-body max-w-2xl mx-auto">
+          Each single origin coffee tells a story of its unique terroir, 
+          climate, and the people who cultivate it. Discover the distinct 
+          flavors that make each origin special.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coffee origins -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="grid grid-3" id="coffee-grid">
+        <!-- Coffee cards will be populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About single origins -->
+  <section class="section section-divider">
+    <div class="container">
+      <div class="grid grid-2">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight text-heading mb-4">
+            What Makes Single Origin Special?
+          </h2>
+          <p class="text-body mb-4">
+            Single origin coffees come from one specific region, farm, or even a single lot. 
+            This allows the unique characteristics of that particular terroir to shine through.
+          </p>
+          <p class="text-body mb-4">
+            Each origin has its own distinct flavor profile influenced by factors like altitude, 
+            soil composition, climate, and processing methods. From the bright acidity of 
+            Kenyan coffees to the chocolate notes of Colombian beans, every origin offers 
+            a unique tasting experience.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-lg font-medium mb-3">Flavor Profiles by Region</h3>
+          <ul class="space-y-2 text-body">
+            <li><strong>Africa:</strong> Bright, fruity, floral notes</li>
+            <li><strong>Central America:</strong> Balanced, clean, citrus acidity</li>
+            <li><strong>South America:</strong> Nutty, chocolate, caramel sweetness</li>
+            <li><strong>Asia Pacific:</strong> Earthy, spicy, full-bodied</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p class="text-sm text-muted">© <span id="current-year"></span> Elevate Roasting • San Francisco, CA</p>
+        <div class="footer-links">
+          <a href="mailto:hello@elevateroasting.com" class="footer-link">
+            hello@elevateroasting.com
+          </a>
+          <a href="#" class="footer-link" id="instagram-link">
+            Instagram
+          </a>
+          <a href="#" class="footer-link" id="github-link">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript modules -->
+  <script src="../config/site-config.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    // Additional script for single origin page
+    document.addEventListener('DOMContentLoaded', () => {
+      // Populate coffee options
+      const coffeeGrid = document.getElementById('coffee-grid');
+      if (coffeeGrid && window.siteConfig) {
+        const coffees = window.siteConfig.coffeeDrops;
+        const coffeeHTML = coffees.map(coffee => `
+          <div class="card">
+            <div class="card-image" style="background-image: url('${coffee.image}')"></div>
+            <div class="card-content">
+              <h3 class="card-title">${coffee.name}</h3>
+              <p class="card-description">${coffee.description}</p>
+              <div class="mt-3 text-sm text-muted">
+                <div><strong>Origin:</strong> ${coffee.origin}</div>
+                <div><strong>Process:</strong> ${coffee.process}</div>
+                <div><strong>Elevation:</strong> ${coffee.elevation}</div>
+              </div>
+              <div class="card-footer">
+                <span class="card-price">${coffee.price}</span>
+                <button class="btn btn-small" onclick="handleCoffeeDetails('${coffee.id}')">
+                  ${coffee.available ? 'Details' : 'Sold Out'}
+                </button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+        coffeeGrid.innerHTML = coffeeHTML;
+      }
+    });
+
+    function handleCoffeeDetails(coffeeId) {
+      // TODO: Show detailed coffee information
+      alert(`Detailed information for coffee ${coffeeId} would be shown here.`);
+    }
+  </script>
+</body>
+</html>
