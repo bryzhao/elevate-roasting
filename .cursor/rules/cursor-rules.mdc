@@ -4,6 +4,7 @@ globs:
 alwaysApply: true
 ---
 
+// ALWAYS double check your work. Never be over-confident. Prefer the simplest, working solution. If there is any doubt, please ask. Look at all codebase files to get the full context first. 
 
 /// rules for modern software engineering in web development projects
 

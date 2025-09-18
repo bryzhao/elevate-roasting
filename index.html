@@ -51,10 +51,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Custom styles -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=2" />
 </head>
 
-<body class="antialiased">
+<body class="antialiased theme-light">
   <!-- Site header -->
   <header class="header">
     <div class="container">
@@ -64,6 +64,9 @@
         </a>
         <nav class="nav" id="main-nav">
           <!-- Navigation items will be populated by JavaScript -->
+          <button class="nav-link" data-theme-toggle title="Toggle theme">
+            🌓
+          </button>
         </nav>
       </div>
     </div>
@@ -168,8 +171,20 @@
   </footer>
 
   <!-- JavaScript modules -->
+  <script src="config/theme-config.js"></script>
   <script src="config/site-config.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/app.js"></script>
+  
+  <!-- Fallback theme initialization -->
+  <script>
+    // Ensure theme is applied even if ThemeManager fails to load
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!document.body.classList.contains('theme-light') && !document.body.classList.contains('theme-dark')) {
+        document.body.classList.add('theme-light');
+        console.log('Fallback: Applied theme-light class');
+      }
+    });
+  </script>
 </body>
 </html>

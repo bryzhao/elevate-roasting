@@ -26,16 +26,7 @@
  * and support for both light and dark themes.
  */
 :root {
-  --ring: 0 0 0 2px rgba(0,0,0,.08); /* Focus ring for accessibility */
-  --primary-color: #2c2c2c; /* Dark text for readability on light background */
-  --secondary-color: #666666; /* Muted gray for secondary text */
-  --border-color: #d4d4d4; /* Subtle borders that don't compete with content */
-  --background-color: #EFDECD; /* Light beige background for modern aesthetic */
-  --text-primary: #2c2c2c; /* Primary text color for maximum contrast */
-  --text-secondary: #666666; /* Secondary text for hierarchy */
-  --text-muted: #999999; /* Muted text for less important information */
-  --border-light: #e5e5e5; /* Lighter borders for subtle separation */
-  --border-dark: #cccccc; /* Darker borders for strong separation */
+  /* Base spacing and typography variables that don't change with theme */
   
   /* Spacing scale based on 4px grid system with modern generous spacing
    * 
@@ -94,6 +85,41 @@ body {
   letter-spacing: 0.01em; /* Slight letter spacing for body text */
   -webkit-font-smoothing: antialiased; /* Crisp text on WebKit browsers */
   -moz-osx-font-smoothing: grayscale; /* Crisp text on Firefox */
+}
+
+/* Theme classes for centralized theme management
+ * 
+ * These classes allow easy switching between themes by applying
+ * them to the body element. This centralizes theme configuration
+ * and makes it easier to maintain consistent theming across all pages.
+ * 
+ * Using body.theme-* for higher specificity to ensure theme variables
+ * override any default values.
+ */
+body.theme-light {
+  --ring: 0 0 0 2px rgba(0,0,0,.08);
+  --primary-color: #2c2c2c;
+  --secondary-color: #666666;
+  --border-color: #d4d4d4;
+  --background-color: #EFDECD;
+  --text-primary: #2c2c2c;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border-light: #c4c4c4;
+  --border-dark: #cccccc;
+}
+
+body.theme-dark {
+  --ring: 0 0 0 2px rgba(255,255,255,.08);
+  --primary-color: #ffffff;
+  --secondary-color: #a3a3a3;
+  --border-color: #404040;
+  --background-color: #000000;
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  --text-muted: #737373;
+  --border-light: #525252;
+  --border-dark: #262626;
 }
 
 /* Layout utilities for consistent page structure
@@ -376,9 +402,17 @@ body {
   position: sticky; /* Sticky positioning for persistent navigation */
   top: 0;
   z-index: 10; /* High z-index to stay above other content */
-  background-color: rgba(239, 222, 205, 0.9); /* Semi-transparent light beige background */
   backdrop-filter: blur(8px); /* Blur effect for modern look */
   border-bottom: 1px solid var(--border-light);
+}
+
+/* Theme-specific header backgrounds */
+body.theme-light .header {
+  background-color: rgba(239, 222, 205, 0.9); /* Semi-transparent light beige background */
+}
+
+body.theme-dark .header {
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
 }
 
 .header-content {

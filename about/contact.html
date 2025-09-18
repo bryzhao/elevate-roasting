@@ -12,10 +12,20 @@
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Custom styles -->
-  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/styles.css?v=2" />
+  
+  <!-- Debug: Force light theme for testing -->
+  <style>
+    body.theme-light {
+      --background-color: #EFDECD !important;
+      --text-primary: #2c2c2c !important;
+      background-color: #EFDECD !important;
+      color: #2c2c2c !important;
+    }
+  </style>
 </head>
 
-<body class="antialiased bg-black text-white">
+<body class="antialiased theme-light">
   <!-- Site header -->
   <header class="header">
     <div class="container">
@@ -156,9 +166,21 @@
   </footer>
 
   <!-- JavaScript modules -->
+  <script src="../config/theme-config.js"></script>
   <script src="../config/site-config.js"></script>
   <script src="../js/utils.js"></script>
   <script src="../js/app.js"></script>
+  
+  <!-- Fallback theme initialization -->
+  <script>
+    // Ensure theme is applied even if ThemeManager fails to load
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!document.body.classList.contains('theme-light') && !document.body.classList.contains('theme-dark')) {
+        document.body.classList.add('theme-light');
+        console.log('Fallback: Applied theme-light class');
+      }
+    });
+  </script>
   <script>
     // Contact form handling
     document.addEventListener('DOMContentLoaded', () => {
