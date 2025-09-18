@@ -45,27 +45,28 @@
   <meta name="color-scheme" content="dark light" />
   
   <!-- Modern Web Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Using system fonts (Helvetica Neue) for optimal performance and modern look -->
   
   <!-- Tailwind via CDN for fast prototyping. Replace with a build step later. -->
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Custom styles -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/styles.css?v=3" />
 </head>
 
-<body class="antialiased bg-black text-white">
+<body class="antialiased theme-light">
   <!-- Site header -->
   <header class="header">
     <div class="container">
       <div class="header-content">
         <a href="#home" class="logo">
-          Elevate<span class="logo-accent">Roasting</span>
+          <img src="assets/logos/logo_black.svg" alt="Elevate Roasting" class="logo-image" />
         </a>
         <nav class="nav" id="main-nav">
           <!-- Navigation items will be populated by JavaScript -->
+          <button class="nav-link" data-theme-toggle title="Toggle theme">
+            🌓
+          </button>
         </nav>
       </div>
     </div>
@@ -170,8 +171,18 @@
   </footer>
 
   <!-- JavaScript modules -->
-  <script src="config/site-config.js"></script>
+  <script src="config/theme-config.js"></script>
+  <script src="config/site-config.js?v=4"></script>
   <script src="js/utils.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=2"></script>
+  
+  <!-- Fallback theme initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!document.body.classList.contains('theme-light') && !document.body.classList.contains('theme-dark')) {
+        document.body.classList.add('theme-light');
+      }
+    });
+  </script>
 </body>
 </html>

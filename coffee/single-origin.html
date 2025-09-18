@@ -12,16 +12,16 @@
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Custom styles -->
-  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/styles.css?v=3" />
 </head>
 
-<body class="antialiased bg-black text-white">
+<body class="antialiased theme-light">
   <!-- Site header -->
   <header class="header">
     <div class="container">
       <div class="header-content">
         <a href="/" class="logo">
-          Elevate<span class="logo-accent">Roasting</span>
+          <img src="../assets/logos/logo_black.svg" alt="Elevate Roasting" class="logo-image" />
         </a>
         <nav class="nav" id="main-nav">
           <!-- Navigation items will be populated by JavaScript -->
@@ -106,42 +106,54 @@
   </footer>
 
   <!-- JavaScript modules -->
-  <script src="../config/site-config.js"></script>
+  <script src="../config/theme-config.js"></script>
+  <script src="../config/site-config.js?v=4"></script>
   <script src="../js/utils.js"></script>
-  <script src="../js/app.js"></script>
+  <script src="../js/app.js?v=2"></script>
+  
+  <!-- Fallback theme initialization -->
   <script>
-    // Additional script for single origin page
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!document.body.classList.contains('theme-light') && !document.body.classList.contains('theme-dark')) {
+        document.body.classList.add('theme-light');
+      }
+    });
+  </script>
+  <script>
+    // Populate coffee grid for single origin page
     document.addEventListener('DOMContentLoaded', () => {
-      // Populate coffee options
-      const coffeeGrid = document.getElementById('coffee-grid');
-      if (coffeeGrid && window.siteConfig) {
-        const coffees = window.siteConfig.coffeeDrops;
-        const coffeeHTML = coffees.map(coffee => `
-          <div class="card">
-            <div class="card-image" style="background-image: url('${coffee.image}')"></div>
-            <div class="card-content">
-              <h3 class="card-title">${coffee.name}</h3>
-              <p class="card-description">${coffee.description}</p>
-              <div class="mt-3 text-sm text-muted">
-                <div><strong>Origin:</strong> ${coffee.origin}</div>
-                <div><strong>Process:</strong> ${coffee.process}</div>
-                <div><strong>Elevation:</strong> ${coffee.elevation}</div>
-              </div>
-              <div class="card-footer">
-                <span class="card-price">${coffee.price}</span>
-                <button class="btn btn-small" onclick="handleCoffeeDetails('${coffee.id}')">
-                  ${coffee.available ? 'Details' : 'Sold Out'}
-                </button>
+      const populateCoffeeGrid = () => {
+        const coffeeGrid = document.getElementById('coffee-grid');
+        if (coffeeGrid && window.siteConfig?.coffeeDrops) {
+          const coffeeHTML = window.siteConfig.coffeeDrops.map(coffee => `
+            <div class="card">
+              <div class="card-image" style="background-image: url('${coffee.image}')"></div>
+              <div class="card-content">
+                <h3 class="card-title">${coffee.name}</h3>
+                <p class="card-description">${coffee.description}</p>
+                <div class="mt-3 text-sm text-muted">
+                  <div><strong>Origin:</strong> ${coffee.origin}</div>
+                  <div><strong>Process:</strong> ${coffee.process}</div>
+                  <div><strong>Elevation:</strong> ${coffee.elevation}</div>
+                </div>
+                <div class="card-footer">
+                  <span class="card-price">${coffee.price}</span>
+                  <button class="btn btn-small" onclick="handleCoffeeDetails('${coffee.id}')">
+                    ${coffee.available ? 'Details' : 'Sold Out'}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        `).join('');
-        coffeeGrid.innerHTML = coffeeHTML;
-      }
+          `).join('');
+          coffeeGrid.innerHTML = coffeeHTML;
+        } else {
+          setTimeout(populateCoffeeGrid, 100);
+        }
+      };
+      populateCoffeeGrid();
     });
 
     function handleCoffeeDetails(coffeeId) {
-      // TODO: Show detailed coffee information
       alert(`Detailed information for coffee ${coffeeId} would be shown here.`);
     }
   </script>
