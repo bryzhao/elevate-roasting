@@ -1,4 +1,6 @@
 name: Lint Website
+permissions:
+  contents: read
 
 on:
   push:
