@@ -96,7 +96,7 @@ const siteConfig = {
       name: 'Kenya Nyeri – Washed',
       description: 'Blackcurrant, grapefruit, florals',
       price: '$18 / 200g',
-      image: 'https://images.unsplash.com/photo-1503481766315-7a586b20f66f?q=80&w=1200&auto=format&fit=crop',
+      image: '/assets/images/latte-cup.jpg?v=4',
       available: true, // Controls whether "Buy" or "Sold Out" is shown
       roastLevel: 'Light', // For filtering and brewing recommendations
       origin: 'Kenya', // Geographic origin for customer education
@@ -139,21 +139,21 @@ const siteConfig = {
     {
       id: 'weekly',
       name: 'Weekly',
-      price: '$18',
+      price: '$16-18/bag',
       description: 'Fresh coffee every week for pickup',
       interval: 'week' // Maps to Stripe billing interval
     },
     {
       id: 'biweekly',
       name: 'Bi-weekly',
-      price: '$32', // Slight discount for larger orders
+      price: '$16-18/bag', // Slight discount for larger orders
       description: 'Fresh coffee every two weeks for pickup',
       interval: '2 weeks'
     },
     {
       id: 'monthly',
       name: 'Monthly',
-      price: '$60', // Best value for regular customers
+      price: '$16-18/bag', // Best value for regular customers
       description: 'Fresh coffee every month for pickup',
       interval: 'month'
     }

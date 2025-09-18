@@ -52,8 +52,8 @@
   --text-xl: 1.25rem;   /* 20px - small headings */
   --text-2xl: 1.5rem;   /* 24px - section headings */
   --text-3xl: 1.875rem; /* 30px - large headings */
-  --text-4xl: 2.25rem;  /* 36px - hero headings */
-  --text-5xl: 3rem;     /* 48px - main hero text */
+  --text-4xl: 2rem;  /* ?px - hero headings */
+  --text-5xl: 2.5rem;     /* ?px - main hero text */
 }
 
 /* Base styles for consistent rendering across browsers
@@ -427,6 +427,18 @@ body.theme-dark .header {
   font-size: var(--text-xl);
   text-decoration: none;
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 2.50rem; /* will be in top left corner */
+  width: auto; /* Maintain aspect ratio */
+  transition: opacity 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.logo:hover .logo-image {
+  opacity: 0.8; /* Subtle hover effect */
 }
 
 .logo-accent {
