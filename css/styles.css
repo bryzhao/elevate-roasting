@@ -26,16 +26,16 @@
  * and support for both light and dark themes.
  */
 :root {
-  --ring: 0 0 0 2px rgba(255,255,255,.08); /* Focus ring for accessibility */
-  --primary-color: #ffffff; /* High contrast white for readability */
-  --secondary-color: #a3a3a3; /* Muted gray for secondary text */
-  --border-color: #404040; /* Subtle borders that don't compete with content */
-  --background-color: #000000; /* Dark background for coffee aesthetic */
-  --text-primary: #ffffff; /* Primary text color for maximum contrast */
-  --text-secondary: #a3a3a3; /* Secondary text for hierarchy */
-  --text-muted: #737373; /* Muted text for less important information */
-  --border-light: #525252; /* Lighter borders for subtle separation */
-  --border-dark: #262626; /* Darker borders for strong separation */
+  --ring: 0 0 0 2px rgba(0,0,0,.08); /* Focus ring for accessibility */
+  --primary-color: #2c2c2c; /* Dark text for readability on light background */
+  --secondary-color: #666666; /* Muted gray for secondary text */
+  --border-color: #d4d4d4; /* Subtle borders that don't compete with content */
+  --background-color: #EFDECD; /* Light beige background for modern aesthetic */
+  --text-primary: #2c2c2c; /* Primary text color for maximum contrast */
+  --text-secondary: #666666; /* Secondary text for hierarchy */
+  --text-muted: #999999; /* Muted text for less important information */
+  --border-light: #e5e5e5; /* Lighter borders for subtle separation */
+  --border-dark: #cccccc; /* Darker borders for strong separation */
   
   /* Spacing scale based on 4px grid system with modern generous spacing
    * 
@@ -75,13 +75,13 @@
 }
 
 html {
-  /* Modern Inter font with fallback to system fonts
+  /* Modern Neue Swiss font with fallback to system fonts
    * 
-   * Inter is a modern, highly readable font designed for digital interfaces.
-   * Maintains excellent legibility at all sizes with optimized letter spacing.
+   * Helvetica Neue provides a clean, modern aesthetic with excellent readability.
+   * Falls back to system fonts for optimal performance and consistency.
    */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", 
-               Segoe UI, Roboto, "Helvetica Neue", Arial, system-ui, "Noto Sans", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, -apple-system, BlinkMacSystemFont, 
+               "SF Pro Text", "SF Pro Display", Segoe UI, Roboto, system-ui, "Noto Sans", sans-serif;
   scroll-behavior: smooth; /* Smooth scrolling for better UX */
 }
 
@@ -340,7 +340,7 @@ body {
   transform: translateY(-10px);
   transition: all 0.2s ease-in-out;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-dropdown.active .nav-dropdown-menu {
@@ -376,7 +376,7 @@ body {
   position: sticky; /* Sticky positioning for persistent navigation */
   top: 0;
   z-index: 10; /* High z-index to stay above other content */
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  background-color: rgba(239, 222, 205, 0.9); /* Semi-transparent light beige background */
   backdrop-filter: blur(8px); /* Blur effect for modern look */
   border-bottom: 1px solid var(--border-light);
 }
