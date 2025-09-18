@@ -122,34 +122,59 @@
   <script>
     // Populate coffee grid for single origin page
     document.addEventListener('DOMContentLoaded', () => {
-      const populateCoffeeGrid = () => {
+      const populateCoffeeGrid = (retryCount = 0, maxRetries = 10) => {
         const coffeeGrid = document.getElementById('coffee-grid');
+        
+        // Check if we have both the DOM element and the config data
         if (coffeeGrid && window.siteConfig?.coffeeDrops) {
-          const coffeeHTML = window.siteConfig.coffeeDrops.map(coffee => `
-            <div class="card">
-              <div class="card-image" style="background-image: url('${coffee.image}')"></div>
-              <div class="card-content">
-                <h3 class="card-title">${coffee.name}</h3>
-                <p class="card-description">${coffee.description}</p>
-                <div class="mt-3 text-sm text-muted">
-                  <div><strong>Origin:</strong> ${coffee.origin}</div>
-                  <div><strong>Process:</strong> ${coffee.process}</div>
-                  <div><strong>Elevation:</strong> ${coffee.elevation}</div>
-                </div>
-                <div class="card-footer">
-                  <span class="card-price">${coffee.price}</span>
-                  <button class="btn btn-small" onclick="handleCoffeeDetails('${coffee.id}')">
-                    ${coffee.available ? 'Details' : 'Sold Out'}
-                  </button>
+          try {
+            const coffeeHTML = window.siteConfig.coffeeDrops.map(coffee => `
+              <div class="card">
+                <div class="card-image" style="background-image: url('${coffee.image}')"></div>
+                <div class="card-content">
+                  <h3 class="card-title">${coffee.name}</h3>
+                  <p class="card-description">${coffee.description}</p>
+                  <div class="mt-3 text-sm text-muted">
+                    <div><strong>Origin:</strong> ${coffee.origin}</div>
+                    <div><strong>Process:</strong> ${coffee.process}</div>
+                    <div><strong>Elevation:</strong> ${coffee.elevation}</div>
+                  </div>
+                  <div class="card-footer">
+                    <span class="card-price">${coffee.price}</span>
+                    <button class="btn btn-small" onclick="handleCoffeeDetails('${coffee.id}')">
+                      ${coffee.available ? 'Details' : 'Sold Out'}
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          `).join('');
-          coffeeGrid.innerHTML = coffeeHTML;
+            `).join('');
+            coffeeGrid.innerHTML = coffeeHTML;
+            return; // Success - exit the function
+          } catch (error) {
+            console.error('Error rendering coffee grid:', error);
+            // Fall through to retry logic
+          }
+        }
+        
+        // If we reach here, either DOM element or config data is missing
+        if (retryCount < maxRetries) {
+          // Retry with exponential backoff, but cap the delay to prevent long waits
+          const delay = Math.min(100 * Math.pow(1.5, retryCount), 1000);
+          setTimeout(() => populateCoffeeGrid(retryCount + 1, maxRetries), delay);
         } else {
-          setTimeout(populateCoffeeGrid, 100);
+          // Final fallback: show error message after max retries
+          console.warn('Failed to populate coffee grid after', maxRetries, 'attempts');
+          const coffeeGrid = document.getElementById('coffee-grid');
+          if (coffeeGrid) {
+            coffeeGrid.innerHTML = '<p class="text-center text-muted">Coffee information temporarily unavailable.</p>';
+          } else {
+            // If DOM element still doesn't exist, log the issue
+            console.error('Coffee grid DOM element not found after', maxRetries, 'attempts');
+          }
         }
       };
+      
+      // Start the population process
       populateCoffeeGrid();
     });
 
